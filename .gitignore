@@ -1,0 +1,26 @@
+# 敏感資訊與認證
+*.env
+*.env.local
+*.key
+*.pem
+*.token
+*credentials.json
+*serviceAccountKey.json
+notebooks.json
+
+# 系統與編輯器暫存
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# 建置與暫存目錄
+node_modules/
+dist/
+temp/
+tmp/
+*.log
+
+# Obsidian 私人資料（若有符號連結）
+.obsidian/

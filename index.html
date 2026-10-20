@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>開放教案與教學資源庫 | 何羽喬 (Ho-yu-chiao)</title>
+  <meta name="description" content="系統化整理並公開分享國中小各領域之創新教案、學習單與課程教材。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-body: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --tag-tech: #0ea5e9;
+      --tag-lang: #8b5cf6;
+      --tag-science: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-left: 1.25rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    /* Filter Pills */
+    .filter-container {
+      max-width: 1100px;
+      margin: 2rem auto 1rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .filter-pill {
+      background: white;
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-pill.active,
+    .filter-pill:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Card Grid */
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .plan-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .badge-tech { background-color: var(--tag-tech); }
+    .badge-lang { background-color: var(--tag-lang); }
+    .badge-science { background-color: var(--tag-science); }
+
+    .grade-badge {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .plan-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+
+    .plan-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      flex-grow: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .author-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-view {
+      background: var(--primary-light);
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-view:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Modal for preview */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 750px;
+      width: 100%;
+      max-height: 85vh;
+      border-radius: 16px;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+
+    .modal-body {
+      margin-top: 1rem;
+    }
+
+    .modal-body pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: inherit;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: white;
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.75rem; }
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        📖 開放教案與教學資源庫
+      </a>
+      <div class="nav-links">
+        <a href="#plans">教案總覽</a>
+        <a href="https://github.com/Ho-yu-chiao/lesson-plans" target="_blank" rel="noopener">GitHub 原始碼</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>探究導向、創新教學的實踐基地</h1>
+      <p>整理與公開分享 108 課綱核心素養教案，涵蓋科技領域、運算思維、科普閱讀與生活科技探究。</p>
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 搜尋教案關鍵字（例如：運算思維、閱讀、電學...）">
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Pills -->
+  <div class="filter-container" id="filterContainer">
+    <button class="filter-pill active" data-filter="all">全部教案</button>
+    <button class="filter-pill" data-filter="tech">科技領域</button>
+    <button class="filter-pill" data-filter="lang">語文領域</button>
+    <button class="filter-pill" data-filter="science">自然與生活科技</button>
+  </div>
+
+  <!-- Plans Grid -->
+  <main class="main-content" id="plans">
+    <div class="plans-grid" id="plansGrid">
+      
+      <!-- Card 1 -->
+      <article class="plan-card" data-category="tech" data-keywords="科技 運算思維 演算法 流程圖 排序">
+        <div class="card-meta">
+          <span class="badge badge-tech">科技領域</span>
+          <span class="grade-badge">國小高年級 ~ 國中七年級</span>
+        </div>
+        <h2 class="plan-title">運算思維與演算法入門</h2>
+        <p class="plan-desc">透過日常生活實例（如泡麵、搭車路線）引導拆解問題與流程圖設計，並透過撲克牌小劇場體驗氣泡排序概念。</p>
+        <div class="card-footer">
+          <span class="author-info">設計者：何羽喬</span>
+          <button class="btn-view" onclick="openPlan('01')">線上閱讀</button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="plan-card" data-category="lang" data-keywords="語文 閱讀 科普 策略 5W1H 圖表">
+        <div class="card-meta">
+          <span class="badge badge-lang">語文領域</span>
+          <span class="grade-badge">國小五至六年級</span>
+        </div>
+        <h2 class="plan-title">科普文本閱讀策略與圖表解讀</h2>
+        <p class="plan-desc">結合格位化閱讀、SQ3R 鷹架策略與六何法（5W1H），引導學生整合圖表數據並進行探究評量與反思推論。</p>
+        <div class="card-footer">
+          <span class="author-info">設計者：何羽喬</span>
+          <button class="btn-view" onclick="openPlan('02')">線上閱讀</button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="plan-card" data-category="science" data-keywords="自然 生活科技 電學 串聯 並聯 實驗">
+        <div class="card-meta">
+          <span class="badge badge-science">自然與生活科技</span>
+          <span class="grade-badge">國中八年級 / 國小進階</span>
+        </div>
+        <h2 class="plan-title">生活科技與基礎電學探究實作</h2>
+        <p class="plan-desc">以水流模型引導電壓電流概念，透過麵包板組裝串聯與並聯電路，並連結家庭用電短路防範與生活安全。</p>
+        <div class="card-footer">
+          <span class="author-info">設計者：何羽喬</span>
+          <button class="btn-view" onclick="openPlan('03')">線上閱讀</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>開放教案與教學資源庫 &copy; 2026 何羽喬 (Ho-yu-chiao) | 以 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-tw" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 條款釋出</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Powered by GitHub Pages & AntiGravity 2 Workflow</p>
+    </div>
+  </footer>
+
+  <script>
+    // Search & Filter Logic
+    const searchInput = document.getElementById('searchInput');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.plan-card');
+
+    let currentFilter = 'all';
+
+    function filterPlans() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const title = card.querySelector('.plan-title').textContent.toLowerCase();
+        const desc = card.querySelector('.plan-desc').textContent.toLowerCase();
+
+        const matchCategory = (currentFilter === 'all' || category === currentFilter);
+        const matchQuery = (query === '' || title.includes(query) || desc.includes(query) || keywords.includes(query));
+
+        if (matchCategory && matchQuery) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterPlans);
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter');
+        filterPlans();
+      });
+    });
+
+    // Content mapping for modal preview
+    const plansContent = {
+      '01': {
+        title: '【科技領域】運算思維與日常生活演算法入門',
+        path: './plans/01-運算思維與演算法入門.md',
+        content: `<h3>教學目標</h3><ul><li>認知：能說出運算思維 4 大要素（拆解、模式識別、抽象化、演算法）。</li><li>技能：能將日常問題轉換為流程圖，並理解氣泡排序比較邏輯。</li><li>情意：體會邏輯推理與解題樂趣。</li></ul><br><h3>主要教學活動</h3><ol><li><strong>第一節：日常問題拆解與流程圖</strong><br>引起動機（機器人吃三明治）、分組設計「智慧泡茶機」流程圖。</li><li><strong>第二節：排序演算法小劇場</strong><br>撲克牌排順序引導、學生分組角色扮演氣泡排序與選擇排序。</li></ol>`
+      },
+      '02': {
+        title: '【語文領域】科普文本閱讀策略與圖表解讀',
+        path: './plans/02-閱讀教學-科普文本閱讀策略.md',
+        content: `<h3>教學目標</h3><ul><li>提取訊息：能快速從長篇科普文本中定位關鍵數據與定義句。</li><li>推論解釋：能整合文本文字與資訊圖表（Infographic），推論因果關係。</li><li>反思評鑑：能評估作者所持觀點之論據是否充分。</li></ul><br><h3>主要教學活動</h3><ol><li><strong>第一節：閱讀前與閱讀中的鷹架策略</strong><br>SQ3R 標題預測與提問、六何法（5W1H）重點劃記。</li><li><strong>第二節：圖表閱讀與探究評量</strong><br>多重文本對照、雙向細目表閱讀素養評量練習。</li></ol>`
+      },
+      '03': {
+        title: '【自然與生活科技】生活科技與基礎電學探究實作',
+        path: './plans/03-生活科技與基礎電學探究.md',
+        content: `<h3>教學目標</h3><ul><li>基本概念：理解電壓、電流與電阻關聯（水流比擬模型）。</li><li>電路實作：安全使用麵包板組裝串聯與並聯電路。</li><li>安全意識：認識家庭配電安全與短路預防觀念。</li></ul><br><h3>主要教學活動</h3><ol><li><strong>第一節：水流與電流比擬模型</strong></li><li><strong>第二節：動手做實驗</strong>（單顆 LED 限流、串聯分壓、並聯分流）</li><li><strong>第三節：生活情境解決</strong>（聖誕樹燈串與延長線跳脫原理）</li></ol>`
+      }
+    };
+
+    function openPlan(id) {
+      const data = plansContent[id];
+      if (!data) return;
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <h2 style="margin-bottom: 0.5rem; color: #0f172a;">\${data.title}</h2>
+        <div style="margin-bottom: 1.5rem;">
+          <a href="\${data.path}" target="_blank" style="font-size: 0.9rem; color: #2563eb; text-decoration: underline;">📄 查看完整 Markdown 原文檔</a>
+        </div>
+        <div style="line-height: 1.7; color: #334155;">
+          \${data.content}
+        </div>
+      `;
+      document.getElementById('modalOverlay').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.id === 'modalOverlay') {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
